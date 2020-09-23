@@ -17,7 +17,7 @@ import * as Sentry from "sentry-cordova";
 Sentry.init({
   dsn:
     "https://135746da3e7942f2b5defc34a90c7837@o87286.ingest.sentry.io/5436400",
-  release: "af312be6412bd1b21e0f95316a0bdc901ee680ea",
+  release: environment.release,
 });
 
 import {ErrorHandler} from "@angular/core";
