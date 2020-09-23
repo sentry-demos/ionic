@@ -1,114 +1,43 @@
-<ion-app [class.dark-theme]="dark">
-  <ion-split-pane contentId="main-content">
+<div class="">
+  <div class="App" style="color: black">
+    <div class="App-header">
+      <img src="assets/sentry-glyph-black.png" class="App-logo" alt="logo" />
+      <h1>Sentry.io - Sample Error Page</h1>
+    </div>
 
-    <ion-menu contentId="main-content">
-      <ion-content>
-        <ion-list lines="none">
-          <ion-list-header>
-            Conference
-          </ion-list-header>
-          <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
-              <ion-icon slot="start" [name]="p.icon + '-outline'"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
-            </ion-item>
+    <div class="center">
+      <form>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="textValue" type="email" class="form-control"
+            [ngModelOptions]="{standalone: true}" placeholder="Enter email">
+        </div>
+        <button type="submit" (click)="this.handleSubmit()" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
 
-          </ion-menu-toggle>
-        </ion-list>
+    <h2>Hi {{currentUser ? currentUser : "Guest"}}</h2>
 
-        <ion-list *ngIf="loggedIn" lines="none">
-          <ion-list-header>
-            Account
-          </ion-list-header>
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/account" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="person"></ion-icon>
-              <ion-label>
-                Account
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/support" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="help"></ion-icon>
-              <ion-label>
-                Support
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item button (click)="logout()" detail="false">
-              <ion-icon slot="start" name="log-out"></ion-icon>
-              <ion-label>
-                Logout
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-        </ion-list>
-
-        <ion-list *ngIf="!loggedIn" lines="none">
-          <ion-list-header>
-            Account
-          </ion-list-header>
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/login" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="log-in"></ion-icon>
-              <ion-label>
-                Login
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/support" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="help"></ion-icon>
-              <ion-label>
-                Support
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/signup" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="person-add"></ion-icon>
-              <ion-label>
-                Signup
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-item>
-            <ion-icon slot="start" name="moon-outline"></ion-icon>
-            <ion-label>
-              Dark Mode
-            </ion-label>
-            <ion-toggle [(ngModel)]="dark"></ion-toggle>
-          </ion-item>
-        </ion-list>
-
-        <ion-list lines="none">
-          <ion-list-header>
-            Tutorial
-          </ion-list-header>
-          <ion-menu-toggle autoHide="false">
-            <ion-item button (click)="openTutorial()" detail="false">
-              <ion-icon slot="start" name="hammer"></ion-icon>
-              <ion-label>Show Tutorial</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-
-  </ion-split-pane>
-
-</ion-app>
+    <ul class="center list-group" [ngStyle]="{ 'color': color }" (click)="this.changeColor()">
+      <li class="list-group-item list-group-item-danger">
+        <h3>ERRORS</h3>
+      </li>
+      <li class="list-group-item" (click)="this.notAFunctionError()">
+        <h3>TypeError</h3>
+        <p>obj.attributeInvalid is not a function</p>
+      </li>
+      <li class="list-group-item" (click)="this.uriError()">
+        <h3>URIError</h3>
+        <p>URI malformed
+        </p>
+      </li>
+      <li class="list-group-item" (click)="this.syntaxError()">
+        <h3>SyntaxError</h3>
+        <p>Unexpected identifier</p>
+      </li>
+      <li class="list-group-item" (click)="this.rangeError()">
+        <h3>RangeError</h3>
+        <p>Parameter must be between 1 and 100</p>
+      </li>
+    </ul>
+  </div>
+</div>
