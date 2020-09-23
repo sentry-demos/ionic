@@ -7,13 +7,12 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicModule } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 
-// Sentry start
+// Sentry SDK import + setup
 import * as Sentry from "sentry-cordova";
 Sentry.init({
   dsn:
@@ -38,7 +37,6 @@ export class SentryIonicErrorHandler extends ErrorHandler {
 @NgModule({
   imports: [
     BrowserModule,
-    // AppRoutingModule,
     HttpClientModule,
     FormsModule,
     IonicModule.forRoot(),
@@ -54,7 +52,7 @@ providers : [
   StatusBar,
   {
     provide: ErrorHandler,
-    useClass: SentryIonicErrorHandler
+    useClass: SentryIonicErrorHandler // specify Sentry error handler
   }
 ],
   bootstrap: [AppComponent]
