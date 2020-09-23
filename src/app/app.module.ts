@@ -16,8 +16,9 @@ import { FormsModule } from '@angular/forms';
 // Sentry start
 import * as Sentry from "sentry-cordova";
 Sentry.init({
-  dsn: "https://135746da3e7942f2b5defc34a90c7837@o87286.ingest.sentry.io/5436400",
-  release : "5e3bb804a373663ad9a84ba90d748e3b5ad75f89"
+  dsn:
+    "https://135746da3e7942f2b5defc34a90c7837@o87286.ingest.sentry.io/5436400",
+  release: "af312be6412bd1b21e0f95316a0bdc901ee680ea",
 });
 
 import {ErrorHandler} from "@angular/core";
@@ -37,7 +38,7 @@ export class SentryIonicErrorHandler extends ErrorHandler {
 @NgModule({
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule,
     HttpClientModule,
     FormsModule,
     IonicModule.forRoot(),

@@ -5,7 +5,7 @@
 SENTRY_ORG=testorg-az
 SENTRY_PROJECT=ionic-webinar
 VERSION=`sentry-cli releases propose-version`
-SOURCEMAP_LOCATION=www
+SOURCEMAP_LOCATION?=www
 
 setup_release: create_release associate_commits upload_sourcemaps
 
@@ -21,3 +21,18 @@ upload_sourcemaps:
 
 # reference_release:
 # 	sed -i -e "s/release: .*/\release: \"${VERSION}\"/g" src/app/app.module.ts
+
+
+deploy_web:
+	ionic build --prod --source-map && \
+		make upload_sourcemaps && \
+		serve www
+
+deploy_android:
+	ionic cordova run android --prod --source-map && \
+		SOURCEMAP_LOCATION=./platforms/android/app/src/main/assets/www make upload_sourcemaps
+
+deploy_ios:
+	ionic cordova run ios --prod --source-map && \
+		SOURCEMAP_LOCATION=./platforms/ios/www make upload_sourcemaps
+
