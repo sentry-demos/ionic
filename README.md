@@ -2,7 +2,7 @@
 
 ## Installation
 
-https://docs.sentry.io/platforms/javascript/guides/cordova/ionic/
+https://docs.sentry.io/platforms/javascript/guides/capacitor/ionic/
 
 ## Setup
 `nvm use`
@@ -25,7 +25,9 @@ https://docs.sentry.io/platforms/javascript/guides/cordova/ionic/
 
 ### Android
 
-1. Run `ionic cordova run android --prod`
+1. Run `ionic build --prod`
+2. npm run sentry:sourcemaps
+3. npx cap run android
 
 ### iOS
 
