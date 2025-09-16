@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import * as Sentry from "sentry-cordova";
+import * as Sentry from "@sentry/capacitor";
 
 
 @Component({
@@ -23,9 +23,7 @@ export class AppComponent {
 
   handleSubmit() {
     this.currentUser = this.textValue;
-    Sentry.configureScope(scope => {
-      scope.setUser({email: this.currentUser});
-    });
+    Sentry.setUser({email: this.currentUser});
   }
 
   malformed() {

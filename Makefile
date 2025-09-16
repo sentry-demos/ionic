@@ -2,8 +2,8 @@
 # Following variable must be passed in
 #  SENTRY_AUTH_TOKEN
 
-SENTRY_ORG=testorg-az
-SENTRY_PROJECT=ionic-webinar
+SENTRY_ORG=team-se
+SENTRY_PROJECT=simon-capacitor
 VERSION=`sentry-cli releases propose-version`
 SOURCEMAP_LOCATION?=www
 
