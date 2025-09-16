@@ -26,8 +26,8 @@ https://docs.sentry.io/platforms/javascript/guides/capacitor/ionic/
 ### Android
 
 1. Run `ionic build --prod`
-2. npm run sentry:sourcemaps
-3. npx cap run android
+2. Run `npm run sentry:sourcemaps`
+3. Run `npx cap run android`
 
 ### iOS
 
